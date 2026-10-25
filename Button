@@ -1,0 +1,22 @@
+// Worksheet 3: Push the button
+// The LED on pin 8 lights up while the button on pin 2 is pressed.
+// The button uses the Arduino's built-in pull-up resistor, so no extra resistor is needed for it.
+
+const int buttonPin = 2;   // the pin the button is connected to
+const int ledPin = 8;      // the pin the LED is connected to
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);  // pin 2 reads the button
+  pinMode(ledPin, OUTPUT);           // pin 8 powers the LED
+}
+
+void loop() {
+  int buttonState = digitalRead(buttonPin);  // read the button
+
+  // With INPUT_PULLUP, the pin reads LOW when the button is pressed
+  if (buttonState == LOW) {
+    digitalWrite(ledPin, HIGH);   // pressed: LED on
+  } else {
+    digitalWrite(ledPin, LOW);    // not pressed: LED off
+  }
+}
